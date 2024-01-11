@@ -1,87 +1,46 @@
-<!DOCTYPE html>
-<html lang="en" class="!scroll-smooth">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SearchIntern Web App</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="main.js"></script>
-  <style>
-    .faq-answer {
-      display: none;
-    }
-  </style>
-</head>
-<body class="bg-gray-100">
+{% extends "base.html" %} 
 
- <!-- Navigation Bar -->
-<nav class="bg-blue-500 text-white p-4 fixed w-full top-0 z-10">
-  <div class="container mx-auto flex justify-between items-center">
-      <div class="flex items-center ">
-        <a href="#" class="text-white text-lg font-semibold">SearchIntern</a>
-      </div>
-  
-      <div class="hidden md:flex items-center space-x-4">
-        <a href="#" class="text-white hover:text-gray-300">Home</a>
-        <a href="#" class="text-white hover:text-gray-300">Training</a>
-        <a href="#" class="text-white hover:text-gray-300">Login</a>
-        
-         <!-- Dropdown for Register -->
-      <div class="relative group">
-        <input type="button" value="Register" class="text-white px-4 py-2 rounded-md focus:outline-none">
-        <div class="absolute hidden bg-white text-blue-500 rounded-md mt-2 space-y-2 group-hover:block">
-          <a href="#" class="block px-4 py-2">Register as Student</a>
-          <a href="#" class="block px-4 py-2">Register as Organization</a>
-        </div>
-      </div>
-    </div>
-  
-      <div class="flex items-center md:hidden">
-        <button id="mobile-menu-btn" class="text-white">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden hidden">
-      <div class="container mx-auto py-2">
-        <a href="#" class="block text-white py-2">Home</a>
-        <a href="#" class="block text-white py-2">Training</a>
-        <a href="#" class="block text-white py-2">Login</a>
-        
-        <!-- Dropdown for Register -->
-        <div class="relative group">
-          <input type="button" value="Register" class="block text-white py-2 rounded-md focus:outline-none">
-          <div class="absolute hidden bg-white text-blue-500 rounded-md mt-2 space-y-2 group-hover:block">
-            <a href="#" class="block px-4 py-2">Register as Student</a>
-            <a href="#" class="block px-4 py-2">Register as Organization</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+{% block content%}
 
- <!-- Hero Section -->
-<section class=" h-screen flex flex-col justify-center items-center">
-  <div class="text-center">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">Find Your Internship Opportunity</h1>
-    <p class="text-lg md:text-xl mb-8">Explore a world of opportunities with SearchIntern</p>
-    <a href="#" class="bg-white text-blue-500 hover:bg-blue-700 py-2 px-4 rounded-full font-semibold transition duration-300">Get Started</a>
+  
+  
+
+
+  <!-- Hero Section -->
+  <div class="hero-section text-center py-44">
+    <h1 class="text-4xl font-bold mb-4">Discover Your Next Internship</h1>
+    <p class="text-lg mb-8">Connecting students with exciting internship opportunities and helping organizations find the best talent.</p>
+    <a href="#explore" class="bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-400 transition duration-300">Explore Now</a>
   </div>
-</section>
+
+<div class="container mx-auto flex justify-around flex-wrap p-4">
+  <!-- Student Section -->
+  <div class="section bg-white p-8 rounded-md m-4 text-center">
+    <i class="fas fa-user-graduate text-4xl text-blue-500 mb-4"></i>
+    <h2 class="text-xl font-semibold text-gray-800 mb-2">Find Internship</h2>
+    <p>Discover opportunities for your career growth. Search and apply for internships.</p>
+  </div>
+
+  <!-- Organization Section -->
+  <div class="section bg-white p-8 rounded-md m-4 text-center">
+    <i class="fas fa-building text-4xl text-blue-500 mb-4"></i>
+    <h2 class="text-xl font-semibold text-gray-800 mb-2">Find the Best Student</h2>
+    <p>Connect with talented students. Find the best fit for your organization.</p>
+  </div>
+</div>
+
+
 
 <!-- Frequently Asked Questions Section -->
-<section class="container mx-auto my-10">
+<section class="container mx-auto my-14">
   <h2 class="text-3xl font-semibold mb-6">Frequently Asked Questions</h2>
 
   <!-- FAQ Item 1 -->
   <div class="mb-4">
-    <button class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none" onclick="toggleAnswer('faq-answer-1')">+ How do I create an account?</button>
+    <button class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none" onclick="toggleAnswer('faq-answer-1')">+  How can I search for internships?</button>
     <div id="faq-answer-1" class="faq-answer mt-2">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Proin sagittis quam nec dui efficitur euismod.</p>
+      <p>You can search for internships by logging into your account and using the search feature on our platform. Filter by your preferences to find suitable opportunities.
+      </p>
     </div>
   </div>
 
@@ -89,26 +48,34 @@
   <div class="mb-4">
     <button class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none" onclick="toggleAnswer('faq-answer-2')">+ How can I apply for internships?</button>
     <div id="faq-answer-2" class="faq-answer mt-2">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Proin sagittis quam nec dui efficitur euismod.</p>
+      <p> Once you find an internship of interest, click on the "Apply" button and follow the application instructions provided by the organization offering the internship.</p>
     </div>
   </div>
+
 
   
 
 </section>
+<script>
+  
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  });
+
+  function toggleAnswer(answerId) {
+    var answer = document.getElementById(answerId);
+    if (answer.style.display === "none") {
+      answer.style.display = "block";
+    } else {
+      answer.style.display = "none";
+    }
+  }
+</script>
 
 
-<!--Footer section-->
-<footer class="bg-blue-500 text-white p-4">
-  <div class="container mx-auto text-center">
-    <p class="text-sm">&copy; 2024 SearchIntern. All rights reserved.</p>
-    <div class="flex items-center justify-center space-x-4 mt-2">
-      <a href="#" class="hover:text-gray-300">Privacy Policy</a>
-      <a href="#" class="hover:text-gray-300">Terms of Service</a>
-      <a href="#" class="hover:text-gray-300">Contact Us</a>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+{% endblock %}
