@@ -6,7 +6,17 @@ def homepage(request):
         return render(request, 'index.html', contents)
 
 def login(request):
-        return render(request, 'login.html')
+        contents = {"title":"Login"}
+        return render(request, 'login.html', contents)
 
 def aboutUs(request):
-        return render (request, 'about_us.html')
+        contents = {"title":"aboutus"}
+        return render (request, 'about_us.html', contents)
+
+def register(request):
+    contents = {"title":"Registration"}
+    return render(request,"register_form.html",contents)
+
+def userprofile(request):
+    contents = {"User profile":""}
+    return render(request,"user_profile.html",contents)
