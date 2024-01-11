@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SearchIntern Web App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+ 
+<nav class="bg-blue-500 p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="flex items-center">
+      <a href="#" class="text-white text-lg font-semibold">SearchIntern</a>
+    </div>
+ 
+    <div class="hidden md:flex items-center space-x-4">
+      <a href="#" class="text-white hover:text-gray-300">Home</a>
+      <a href="#" class="text-white hover:text-gray-300">About</a>
+      <a href="#" class="text-white hover:text-gray-300">Services</a>
+ 
+    </div>
+ 
+    <div class="flex items-center md:hidden">
+      <button id="mobile-menu-btn" class="text-white">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+ 
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden">
+    <div class="container mx-auto py-2">
+      <a href="#" class="block text-white py-2">Home</a>
+      <a href="#" class="block text-white py-2">About</a>
+      <a href="#" class="block text-white py-2">Services</a>
+      <!-- Add more menu items here -->
+    </div>
+  </div>
+</nav>
+<div class="w-full flex justify-center items-center mt-16">
+<div class="bg-[#70c3d1] text-black p-8 rounded-lg shadow-md w-96 justify-center align-middle">
+    <h2 class="text-2xl font-semibold mb-4">login</h2>
+
+    <form action="#" method="post">
+        <!-- Name Input -->
+        <div class="mb-4">
+            <label for="Email" class="block text-sm font-medium text-gray-600"> Email</label>
+            <input type="text" id="name" name="name" class="mt-1 p-2 w-full border rounded-md">
+        </div>
+
+        <!-- College Name Input -->
+        <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-600">password</label>
+            <input type="password" id="college" name="college" class="mt-1 p-2 w-full border rounded-md">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded-md w-full">Login</button>
+    </form>
+</div></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+ 
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  });
+
+
+
+</script>
+ 
+</body>
+</html>
