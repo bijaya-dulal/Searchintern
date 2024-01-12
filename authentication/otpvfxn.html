@@ -1,87 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OTP Verification</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-</head>
-<body class="bg-gray-100 h-screen flex items-center justify-center">
-
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+  </head>
+  <body class="bg-gray-100 h-screen flex items-center justify-center">
     <div class="form-container">
-        <div class="form bg-white p-8 rounded-lg shadow-md w-96">
-            <h1 class="text-2xl font-semibold mb-4">OTP Verification</h1>
-            
-            <!-- Email Input -->
-            <input type="email" id="emailInput" placeholder="Enter your email address" class="boxup p-2 mb-4 border rounded-md w-full">
-            
-            <!-- Send OTP Button -->
-            <button id="generateOTP" onclick="generateOTP()" class="button bg-blue-500 text-white p-2 rounded-md w-full">Send OTP</button>
-            
-            <br><br>
-            
-            <!-- OTP Input (Initially Hidden) -->
-            <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="4" minlength="4" class="boxup p-2 mb-4 border rounded-md w-full hidden">
-            
-            <!-- Verify OTP Button (Initially Hidden) -->
-            <button onclick="verifyOTP()" id="verifyOTPButton" class="button bg-green-500 text-white p-2 rounded-md w-full hidden">Verify OTP</button>
-            
-            <br>
-            
-            <!-- Next Button (Initially Hidden) -->
-            <button id="after-verified" class="button bg-blue-500 text-white p-2 rounded-md w-full hidden"><a href="signup2.html">Next</a></button>
-        </div>
+      <div class="form bg-white p-8 rounded-lg shadow-md w-96">
+        <h1 class="text-2xl font-semibold mb-4">OTP Verification</h1>
+
+        <!-- Email Input -->
+        <input
+          type="email"
+          id="emailInput"
+          placeholder="Enter your email address"
+          class="boxup p-2 mb-4 border rounded-md w-full"
+        />
+
+        <!-- Send OTP Button -->
+        <button
+          id="generateOTP"
+          onclick="generateOTP()"
+          class="button bg-blue-500 text-white p-2 rounded-md w-full"
+        >
+          Send OTP
+        </button>
+
+        <br /><br />
+
+        <!-- OTP Input (Initially Hidden) -->
+        <input
+          type="text"
+          id="otpInput"
+          placeholder="Enter OTP"
+          maxlength="4"
+          minlength="4"
+          class="boxup p-2 mb-4 border rounded-md w-full hidden"
+        />
+
+        <!-- Verify OTP Button (Initially Hidden) -->
+        <button
+          onclick="verifyOTP()"
+          id="verifyOTPButton"
+          class="button bg-green-500 text-white p-2 rounded-md w-full hidden"
+        >
+          Verify OTP
+        </button>
+
+        <br />
+
+        <!-- Next Button (Initially Hidden) -->
+        <button
+          id="after-verified"
+          class="button bg-blue-500 text-white p-2 rounded-md w-full hidden"
+        >
+          <a href="signup2.html">Next</a>
+        </button>
+      </div>
     </div>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script> 
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
-        function generateOTP() {
-            document.getElementById("generateOTP").value = "Resend";
-            const otp = Math.floor(Math.random() * 10000);
-            localStorage.setItem('otp', otp);
-            sendOTPByEmail(otp);
-        }
+      function generateOTP() {
+        document.getElementById("generateOTP").value = "Resend";
+        const otp = Math.floor(Math.random() * 10000);
+        localStorage.setItem("otp", otp);
+        sendOTPByEmail(otp);
+      }
 
-        function sendOTPByEmail(otp) {
-            const email = document.getElementById('emailInput').value;
-            Email.send({
-                Host: "smtp.elasticemail.com",
-                Username: "dulalbijaya0@gmail.com",
-                Password: "769182401DE1079C96D8F1B790331D7B2460",
-                To: email,
-                From: "dulalbijaya0@gmail.com",
-                Subject: "OTP for pustak chakra",
-                Body: "Use this otp to verify your email < " + otp + ">"
-            }).then(message => {
-                if (message === 'OK') {
-                    alert("Email sent successfully. Please check your email (also spam folder).");
-                    const email = document.getElementById('emailInput').value;
-                    localStorage.setItem('email', email);
-                    // Show the initially hidden items
-                    document.getElementById('otpInput').classList.remove('hidden');
-                    document.getElementById('verifyOTPButton').classList.remove('hidden');
-                } else {
-                    alert("Email not sent: " + message);
-                }
-            });
-            console.log(`OTP: ${otp}`);
-        }
+      function sendOTPByEmail(otp) {
+        const email = document.getElementById("emailInput").value;
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "khatrivikram005@gmail.com",
+          Password: "DF5758DCB31DBC69CB0D6B2C99D6338AFE0A",
+          To: email,
+          From: "khatrivikram005@gmail.com",
+          Subject: "OTP for test",
+          Body: "Use this otp to verify your email < " + otp + ">",
+        }).then((message) => {
+          if (message === "OK") {
+            alert(
+              "Email sent successfully. Please check your email (also spam folder)."
+            );
+            const email = document.getElementById("emailInput").value;
+            localStorage.setItem("email", email);
+            // Show the initially hidden items
+            document.getElementById("otpInput").classList.remove("hidden");
+            document
+              .getElementById("verifyOTPButton")
+              .classList.remove("hidden");
+          } else {
+            alert("Email not sent: " + message);
+          }
+        });
+        console.log(`OTP: ${otp}`);
+      }
 
-        function verifyOTP() {
-            const enteredOTP = document.getElementById('otpInput').value;
-            const successMessage = document.getElementById('successMessage');
-            const afterVerifiedButton = document.getElementById('after-verified');
+      function verifyOTP() {
+        const enteredOTP = document.getElementById("otpInput").value;
+        const successMessage = document.getElementById("successMessage");
+        const afterVerifiedButton = document.getElementById("after-verified");
 
-            // Simulated correct OTP verification
-            if (enteredOTP === localStorage.getItem('otp')) {
-                // Show the success message and the Next button
-                successMessage.classList.remove('hidden');
-                afterVerifiedButton.classList.remove('hidden');
-            } else {
-                // Display error message for incorrect OTP
-                console.error('Invalid OTP');
-            }
+        // Simulated correct OTP verification
+        if (enteredOTP === localStorage.getItem("otp")) {
+          // Show the success message and the Next button
+          successMessage.classList.remove("hidden");
+          afterVerifiedButton.classList.remove("hidden");
+        } else {
+          // Display error message for incorrect OTP
+          console.error("Invalid OTP");
         }
+      }
     </script>
-</body>
+  </body>
 </html>
