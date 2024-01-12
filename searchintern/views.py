@@ -1,53 +1,17 @@
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render 
-from user_details.models import User_details
+from userinfo.models import User_details
 import re
 
 
 
-def hash_password(password):
-    password_bytes = password.encode('utf-8')
-    sha256_hash = hashlib.sha256()
-    sha256_hash.update(password_bytes)
-    return sha256_hash.hexdigest()
 
-def check_password(entered_password, stored_hashed_password):
-    hashed_entered_password = hash_password(entered_password)
-    return hashed_entered_password == stored_hashed_password
+
+
 #----------------------------------------------
 def homepage(request):
         contents = {"title":"Home"}
         return render(request, 'index.html', contents)
-
-def login(request):
-    error = False
-    
-    try:
-        if request.method == 'POST':
-            print("Inside POST method")
-            # Accessing form data
-            email = request.POST.get('email')
-            pw = request.POST.get('pass')
-            print("Email:", email)
-            print("Password:", pw)
-            if is_valid_email(email):
-               pass
-            else:
-            
-                error = True
-                contents = {"title": "Login", 'error': error}
-                return render(request, "login.html", contents)
-
-            return render(request, "login.html", contents)
-        else:
-            print("Inside else")
-            contents = {"title": "Login", 'error': error}
-            return render(request, "login.html", contents)
-
-    except Exception as e:
-        print("Error:", str(e))  # Print or log the exception message
-        contents = {"title": "Login", 'error': error, 'exception_message': str(e)}
-        return render(request, "login.html", contents)
 
 
 
@@ -71,12 +35,14 @@ def signup(request):
         if request.method == 'POST':
             print("Inside POST method")
             # Accessing form data
-            name = request.POST.get('name')
+            name = (request.POST.get('name'))
             email = request.POST.get('email')
             pw = request.POST.get('pass')
             vpw = request.POST.get('v-pass')
+            category= request.POST.get('category')
             print("Email:", email)
             print("Password:", pw)
+            
             if is_valid_email(email):
                print("in valid email")
                if is_valid_password(pw):
@@ -84,7 +50,13 @@ def signup(request):
                    if is_valid_name(name):
                        print("in valid name")
                        
-                       den = User_details(name=name,)
+                       en =User_details(name=name,email=email,password=pw,category=category)
+                       try:
+                            en.save()
+                            return render(request,"login.html")
+                        
+                       except Exception as e:
+                          print("Error:", str(e))
                        return HttpResponse("welcome")
                    else:
                         contents = {'title': "signup",
@@ -146,3 +118,43 @@ def is_valid_name(name):
 
     # Return True if the name is valid, False otherwise
     return bool(match)
+
+def login(request):
+    error = False
+    
+    try:
+        if request.method == 'POST':
+            print("Inside POST method")
+            # Accessing form data
+            email =str(request.POST.get('email'))
+            pw = str(request.POST.get('pass'))
+            print("Email:", email)
+            print("Password:", pw)
+            if is_valid_email(email):
+               login_data = User_details.objects.all()
+               for a in login_data:
+                   print(a.email)
+                   print(a.password)
+                   if a.email == email and a.password == pw:
+                      return render(request, 'index.html') 
+                   
+               contents = {"title": "Login", 'error': True,"error_message":"credential mismatch"}
+               return render(request, "login.html", contents)
+              
+            else:
+            
+                
+                contents = {"title": "Login", 'error': True,'error_message':"Enter proper value"}
+                return render(request, "login.html", contents)
+
+            return render(request, "login.html", contents)
+        else:
+            print("Inside else")
+            contents = {"title": "Login", 'error': error}
+            return render(request, "login.html", contents)
+
+    except Exception as e:
+        print("Error:", str(e))  # Print or log the exception message
+        contents = {"title": "Login", 'error': error, 'exception_message': str(e)}
+        return render(request, "login.html", contents)
+

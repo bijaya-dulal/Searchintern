@@ -1,6 +1,6 @@
 from django.db import models
 
-class Student_details(models.Model):
+class Student_info(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     contact = models.CharField(max_length=15)  # Assuming phone numbers as strings

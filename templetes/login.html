@@ -9,7 +9,7 @@
           {% csrf_token %}
      {% if error %}
       <div class="bg-red-500 text-white p-4 rounded-md mb-4">
-        <p>input proper value</p>
+        <p>{{error_message}}</p>
       </div>
     {% endif %}
     
@@ -21,7 +21,7 @@
            
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-gray-600">password</label>
-                <input type="pass" id="pass" name="pass" class="mt-1 p-2 w-full border rounded-md">
+                <input type="password" id="pass" name="pass" class="mt-1 p-2 w-full border rounded-md">
             </div>
     
             <!-- Submit Button -->
