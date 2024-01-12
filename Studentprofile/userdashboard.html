@@ -6,55 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>SearchIntern - Student Dashboard</title>
+    <script src="main.js"></script>
 </head>
 
 <body class="bg-gray-100">
 
-    <div class="flex flex-col md:flex-row">
+     <!-- Navigation Bar -->
+<nav class="bg-blue-500 text-white p-4 fixed w-full top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center ">
+          <a href="#" class="text-white text-lg font-semibold">SearchIntern</a>
+        </div>
+    
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="#" class="text-white hover:text-gray-300">Home</a>
+          <a href="#" class="text-white hover:text-gray-300">About Us</a>
+          <a href="#" class="text-white hover:text-gray-300">Login</a>
+          <a href="#" class="text-white hover:text-gray-300">Register</a>
+        
+      </div>
+    
+        <div class="flex items-center md:hidden">
+          <button id="mobile-menu-btn" class="text-white">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="md:hidden hidden">
+        <div class="container mx-auto py-2">
+          <a href="#" class="block text-white py-2">Home</a>
+          <a href="#" class="block text-white py-2">About Us</a>
+          <a href="#" class="block text-white py-2">Login</a>
+          
+          
+      
+        </div>
+      </div>
+    </nav>
+    
+
+    <div class="flex flex-col md:flex-row  mt-8">
+
         
 
         <!-- Sidebar -->
-        <aside class="bg-blue-500 text-white p-4 md:w-1/4 lg:w-1/5 ">
+        <aside class="bg-blue-500 text-white p-4 md:w-1/4 lg:w-1/5 mt-1">
             <h2 class="text-lg font-semibold mb-4">Student Dashboard</h2>
             <ul>
                 <li class="mb-2"><a href="#" class="hover:underline">Profile</a></li>
                 <li class="mb-2"><a href="#" class="hover:underline">Search Internships</a></li>
                 <li class="mb-2"><a href="#" class="hover:underline">Applications</a></li>
-                <li class="mb-2"><a href="#" class="hover:underline">Settings</a></li>
+                
             </ul>
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 p-4 md:p-8">
+        <main class="flex-1 p-4 md:p-8  ">
+           
 
             <!-- Student Header -->
-            <header class="flex items-center mb-6">
+            <header class="flex items-center mb-6 ">
                 <img src="https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg" alt="Student Image" class="w-12 h-12 rounded-full mr-4">
                 <div>
                     <h1 class="text-2xl font-bold">Welcome, [Student Name]!</h1>
                     <p class="text-gray-500">[College Name]</p>
                 </div>
             </header>
+        
 
             <!-- Personal Details -->
             <section class="mb-8">
                 <h2 class="text-xl font-semibold mb-4">Personal Details</h2>
                 <p><strong>Email:</strong> [Email Address]</p>
                 <p><strong>Contact:</strong> [Contact Number]</p>
+                <p><strong>Address:</strong> [Address]</p>
             </section>
 
             <!-- Academic Information -->
             <section class="mb-8">
                 <h2 class="text-xl font-semibold mb-4">Academic Information</h2>
                 <p><strong>College:</strong> [College Name]</p>
-                <p><strong>Graduation Date:</strong> [Month/Year]</p>
-                <p><strong>GPA:</strong> [GPA]</p>
-            </section>
-
-            <!-- Internship Details -->
-            <section class="mb-8">
-                <h2 class="text-xl font-semibold mb-4">Internship Details</h2>
-                <!-- Display details of previous internships or current internship -->
+                <p><strong>Course:</strong> [Course]</p>
+                <p><strong>Semester:</strong> [Semester]</p>
             </section>
 
             <!-- Skills -->
@@ -62,26 +99,36 @@
                 <h2 class="text-xl font-semibold mb-4">Skills</h2>
                 <p><strong>Technical Skills:</strong> [List of technical skills]</p>
                 <p><strong>Soft Skills:</strong> [List of soft skills]</p>
-                <p><strong>Work Experience:</strong> [Details of work experience]</p>
-            </section>
-
-            <!-- Referral Details -->
-            <section class="mb-8">
-                <h2 class="text-xl font-semibold mb-4">Referral Details</h2>
-                <p><strong>Referral Name:</strong> [Referral Name]</p>
-                <p><strong>Referral Post:</strong> [Referral Post]</p>
+                <p><strong>Training/Workshop</strong> [Details of work experience]</p>
             </section>
 
             <!-- Social Media Profiles -->
             <section>
                 <h2 class="text-xl font-semibold mb-4">Social Media Profiles</h2>
-                <p><strong>LinkedIn:</strong> [LinkedIn Profile Link]</p>
-                <p><strong>Twitter:</strong> [Twitter Profile Link]</p>
-                <!-- Add more social media profiles as needed -->
+                <p><strong>Git Hub:</strong> [Git Hub]</p>
+                <p><strong>Linkedin</strong> [Linkedin]</p>
+
+            </section>
+
+            <section class="mb-8 mt-8">
+                <a href="#"><h2 class="text-xl font-semibold mb-4">Your CV</h2></a>
+                
             </section>
         </main>
 
     </div>
+
+      <!--Footer section-->
+<footer class="bg-blue-500 text-white p-4 mt-auto">
+    <div class="container mx-auto text-center">
+      <p class="text-sm">&copy; 2024 SearchIntern. All rights reserved.</p>
+      <div class="flex items-center justify-center space-x-4 mt-2">
+        <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+        <a href="#" class="hover:text-gray-300">Terms of Service</a>
+        <a href="#" class="hover:text-gray-300">Contact Us</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
