@@ -6,7 +6,8 @@
         <h2 class="text-2xl font-semibold mb-4">login</h2>
     
         <form action="{% url 'login'%}" method="post">
-          {% if error %}
+          {% csrf_token %}
+     {% if error %}
       <div class="bg-red-500 text-white p-4 rounded-md mb-4">
         <p>input proper value</p>
       </div>
@@ -20,11 +21,14 @@
             <!-- College Name Input -->
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-gray-600">password</label>
-                <input type="password" id="college" name="college" class="mt-1 p-2 w-full border rounded-md">
+                <input type="pass" id="pass" name="pass" class="mt-1 p-2 w-full border rounded-md">
             </div>
     
             <!-- Submit Button -->
             <button type="submit" class="bg-blue-500 text-white p-2 rounded-md w-full">Sign In</button>
+            <div>
+              <a href="{% url 'signup' %}">Don't have account?</a>
+            </div>
         </form>
     </div></div>
     <script>

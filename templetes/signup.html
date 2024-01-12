@@ -8,9 +8,14 @@
     <h2 class="text-2xl font-semibold mb-4">Sign Up</h2>
 
    <!-- Modify the name attributes to match the expected names in the Django view -->
-   <form action="#" method="post">
+   <form action="{% url 'signup' %}" method="post">
     {% csrf_token %}
     <!-- Name Input -->
+    {% if error %}
+      <div class="bg-red-500 text-white p-4 rounded-md mb-4">
+        <p>{{error_message}}</p>
+      </div>
+    {% endif %}
     <div class="mb-4">
         <label for="name" class="block text-sm font-medium text-gray-600"> Username</label>
         <input type="text" id="name" name="name" class="mt-1 p-2 w-full border rounded-md">
@@ -19,6 +24,19 @@
     <div class="mb-4">
       <label for="Email" class="block text-sm font-medium text-gray-600"> Email</label>
       <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md">
+  </div>
+
+  <div class="mb-4">
+    <label for="category" class="block text-sm font-medium text-gray-600"> Select category</label>
+    
+    <select id="dropdown" name="dropdown" class="p-2 border rounded-md">
+         <option value="student">student</option>
+         <option value="recruter">recruter</option>
+
+    </select>
+
+
+
   </div>
 
   <!-- password -->
