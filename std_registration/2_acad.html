@@ -39,44 +39,14 @@
 
         <div class="mb-4">
           <label for="gpaTable" class="block text-sm font-medium text-gray-600"
-            >GPA of Each Semester</label
-          >
-          <table id="gpaTable" class="w-full mt-2">
-            <thead>
-              <tr>
-                <th class="p-2 border">Semester</th>
-                <th class="p-2 border">GPA</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- dynamically adding rows for each semester -->
-              <tr>
-                <td class="p-2 border">
-                  <input
-                    type="text"
-                    name="semester1"
-                    class="w-full border p-1"
-                  />
-                </td>
-                <td class="p-2 border">
-                  <input type="text" name="gpa1" class="w-full border p-1" />
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border">
-                  <input
-                    type="text"
-                    name="semester2"
-                    class="w-full border p-1"
-                  />
-                </td>
-                <td class="p-2 border">
-                  <input type="text" name="gpa2" class="w-full border p-1" />
-                </td>
-              </tr>
-              <!-- Add more rows as needed -->
-            </tbody>
-          </table>
+            >semester Semester</label>
+
+            <input
+            type="Number"
+            id="semester"
+            name="semester"
+            class="mt-1 p-2 w-full border rounded-md"
+          />
         </div>
 
         <div class="mt-6">
