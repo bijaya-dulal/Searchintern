@@ -1,6 +1,8 @@
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render 
+from user_details.models import User_details
 import re
+
 
 
 def hash_password(password):
@@ -81,6 +83,8 @@ def signup(request):
                    print("in valid pass")
                    if is_valid_name(name):
                        print("in valid name")
+                       
+                       den = User_details(name=name,)
                        return HttpResponse("welcome")
                    else:
                         contents = {'title': "signup",
