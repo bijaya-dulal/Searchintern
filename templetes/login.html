@@ -1,5 +1,43 @@
 {% extends "base.html" %} 
 
 {% block content%}
-insert your login page here
+<div class="w-full flex justify-center items-center mt-16">
+    <div class="bg-[#70c3d1] text-black p-8 rounded-lg shadow-md w-96 justify-center align-middle">
+        <h2 class="text-2xl font-semibold mb-4">login</h2>
+    
+        <form action="{% url 'login'%}" method="post">
+          {% if error %}
+      <div class="bg-red-500 text-white p-4 rounded-md mb-4">
+        <p>input proper value</p>
+      </div>
+    {% endif %}
+    
+            <div class="mb-4">
+              <label for="Email" class="block text-sm font-medium text-gray-600"> Email</label>
+              <input type="text" id="email" name="email" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+    
+            <!-- College Name Input -->
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-600">password</label>
+                <input type="password" id="college" name="college" class="mt-1 p-2 w-full border rounded-md">
+            </div>
+    
+            <!-- Submit Button -->
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded-md w-full">Sign In</button>
+        </form>
+    </div></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+     
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      });
+    
+    
+    </script>
+     
 {% endblock %}

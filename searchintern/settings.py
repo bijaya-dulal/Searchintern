@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'student_register',
     'Tailwindcss',
     'tailwind',
-    'django_browser_reload',
+    # 'django_browser_reload',
+    
 
     
 ]
