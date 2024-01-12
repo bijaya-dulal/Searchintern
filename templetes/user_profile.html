@@ -1,5 +1,73 @@
 {% extends "base.html" %} 
 
 {% block content%}
-insert your userprofile page here
+
+<div class="flex flex-col md:flex-row  mt-8">
+
+        
+
+    <!-- Sidebar -->
+    <aside class="bg-blue-500 text-white p-4 md:w-1/4 lg:w-1/5 mt-1">
+        <h2 class="text-lg font-semibold mb-4">Student Dashboard</h2>
+        <ul>
+            <li class="mb-2"><a href="#" class="hover:underline">Profile</a></li>
+            <li class="mb-2"><a href="#" class="hover:underline">Search Internships</a></li>
+            <li class="mb-2"><a href="#" class="hover:underline">Applications</a></li>
+            
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4 md:p-8  ">
+       
+
+        <!-- Student Header -->
+        <header class="flex items-center mb-6 ">
+            <img src="https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg" alt="Student Image" class="w-12 h-12 rounded-full mr-4">
+            <div>
+                <h1 class="text-2xl font-bold">Welcome, [Student Name]!</h1>
+                <p class="text-gray-500">[College Name]</p>
+            </div>
+        </header>
+    
+
+        <!-- Personal Details -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Personal Details</h2>
+            <p><strong>Email:</strong> [Email Address]</p>
+            <p><strong>Contact:</strong> [Contact Number]</p>
+            <p><strong>Address:</strong> [Address]</p>
+        </section>
+
+        <!-- Academic Information -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Academic Information</h2>
+            <p><strong>College:</strong> [College Name]</p>
+            <p><strong>Course:</strong> [Course]</p>
+            <p><strong>Semester:</strong> [Semester]</p>
+        </section>
+
+        <!-- Skills -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Skills</h2>
+            <p><strong>Technical Skills:</strong> [List of technical skills]</p>
+            <p><strong>Soft Skills:</strong> [List of soft skills]</p>
+            <p><strong>Training/Workshop</strong> [Details of work experience]</p>
+        </section>
+
+        <!-- Social Media Profiles -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Social Media Profiles</h2>
+            <p><strong>Git Hub:</strong> [Git Hub]</p>
+            <p><strong>Linkedin</strong> [Linkedin]</p>
+
+        </section>
+
+        <section class="mb-8 mt-8">
+            <a href="#"><h2 class="text-xl font-semibold mb-4">Your CV</h2></a>
+            
+        </section>
+    </main>
+
+</div>
 {% endblock %}
