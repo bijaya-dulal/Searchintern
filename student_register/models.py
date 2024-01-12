@@ -12,5 +12,6 @@ class Student_details(models.Model):
     start_date = models.DateField()
     duration = models.PositiveIntegerField()  # Assuming duration in months
     github = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
     cv = models.FileField(upload_to='cv_pdfs/')
 # Create your models here.

@@ -18,5 +18,9 @@ def register(request):
     return render(request,"register_form.html",contents)
 
 def userprofile(request):
-    contents = {"User profile":""}
+    contents = {"title":"profile"}
     return render(request,"user_profile.html",contents)
+
+def signup(request):
+      contents = {'title':"signup"}
+      return render(request,"sign_up.html",contents)
