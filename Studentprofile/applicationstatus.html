@@ -6,11 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>SearchInterns - Application Status</title>
+    <script src="main.js"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 flex flex-col min-h-screen ">
+     <!-- Navigation Bar -->
+<nav class="bg-blue-500 text-white p-4 fixed w-full top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center ">
+          <a href="#" class="text-white text-lg font-semibold">SearchIntern</a>
+        </div>
+    
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="#" class="text-white hover:text-gray-300">Home</a>
+          <a href="#" class="text-white hover:text-gray-300">About Us</a>
+          <a href="#" class="text-white hover:text-gray-300">Login</a>
+          <a href="#" class="text-white hover:text-gray-300">Register</a>
+        
+      </div>
+    
+        <div class="flex items-center md:hidden">
+          <button id="mobile-menu-btn" class="text-white">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="md:hidden hidden">
+        <div class="container mx-auto py-2">
+          <a href="#" class="block text-white py-2">Home</a>
+          <a href="#" class="block text-white py-2">About Us</a>
+          <a href="#" class="block text-white py-2">Login</a>
+          
+          
+      
+        </div>
+      </div>
+    </nav>
 
-    <div class="container mx-auto p-4">
+    <div class="container mx-auto p-4 mt-12">
 
         <!-- Page Header -->
         <header class="text-center mb-8">
@@ -27,6 +64,7 @@
                     <p class="text-gray-500 mb-2">Company Name</p>
                     <p class="text-gray-700">Status: <span class="text-green-500 font-bold">Accepted</span></p>
                     <p class="text-gray-700">Start Date: June 1, 2023</p>
+                    <button class="mt-4 text-red-600 px-4 py-2 rounded">Cancel</button>
                 </div>
                 
                 <div class="bg-white p-4 border rounded-md shadow-md">
@@ -34,6 +72,7 @@
                     <p class="text-gray-500 mb-2">Company Name</p>
                     <p class="text-gray-700">Status: <span class="text-green-500 font-bold">Accepted</span></p>
                     <p class="text-gray-700">Start Date: June 1, 2023</p>
+                    <button class="mt-4 text-red-600 px-4 py-2 rounded">Cancel</button>
                 </div>
 
                 <div class="bg-white p-4 border rounded-md shadow-md">
@@ -41,6 +80,7 @@
                     <p class="text-gray-500 mb-2">Company Name</p>
                     <p class="text-gray-700">Status: <span class="text-green-500 font-bold">Accepted</span></p>
                     <p class="text-gray-700">Start Date: June 1, 2023</p>
+                    <button class="mt-4 text-red-600 px-4 py-2 rounded">Cancel</button>
                 </div>
 
                 <div class="bg-white p-4 border rounded-md shadow-md">
@@ -48,6 +88,7 @@
                     <p class="text-gray-500 mb-2">Company Name</p>
                     <p class="text-gray-700">Status: <span class="text-green-500 font-bold">Accepted</span></p>
                     <p class="text-gray-700">Start Date: June 1, 2023</p>
+                    <button class="mt-4 text-red-600 px-4 py-2 rounded">Cancel</button>
                 </div>
 
                 <div class="bg-white p-4 border rounded-md shadow-md">
@@ -55,6 +96,7 @@
                     <p class="text-gray-500 mb-2">Company Name</p>
                     <p class="text-gray-700">Status: <span class="text-green-500 font-bold">Accepted</span></p>
                     <p class="text-gray-700">Start Date: June 1, 2023</p>
+                    <button class="mt-4 text-red-600 px-4 py-2 rounded">Cancel</button>
                 </div>
                 
                 <div class="bg-white p-4 border rounded-md shadow-md">
@@ -62,11 +104,23 @@
                     <p class="text-gray-500 mb-2">Company Name</p>
                     <p class="text-gray-700">Status: <span class="text-green-500 font-bold">Accepted</span></p>
                     <p class="text-gray-700">Start Date: June 1, 2023</p>
+                    <button class="mt-4 text-red-600 px-4 py-2 rounded">Cancel</button>
                 </div>
             </div>
         </section>
 
     </div>
+      <!--Footer section-->
+<footer class="bg-blue-500 text-white p-4 mt-auto">
+    <div class="container mx-auto text-center">
+      <p class="text-sm">&copy; 2024 SearchIntern. All rights reserved.</p>
+      <div class="flex items-center justify-center space-x-4 mt-2">
+        <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+        <a href="#" class="hover:text-gray-300">Terms of Service</a>
+        <a href="#" class="hover:text-gray-300">Contact Us</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
