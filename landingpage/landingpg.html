@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="!scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SearchIntern Web App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+  <script src="main.js"></script>
+  <link href="
+  https://cdn.jsdelivr.net/npm/remixicon@4.0.1/fonts/remixicon.min.css
+  " rel="stylesheet">
+
+  <style>
+    .faq-answer {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-[#e0eff3]">
+
+ <!-- Navigation Bar -->
+<nav class="bg-blue-500 text-white p-4 fixed w-full top-0 z-10">
+  <div class="container mx-auto flex justify-between items-center">
+      <div class="flex items-center ">
+        <a href="#" class="text-white text-lg font-semibold">SearchIntern</a>
+      </div>
+  
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="#" class="text-white hover:text-gray-300">Home</a>
+        <a href="#" class="text-white hover:text-gray-300">About Us</a>
+        <a href="#" class="text-white hover:text-gray-300">Login</a>
+        <a href="#" class="text-white hover:text-gray-300">Register</a>
+        <a href="#"><i class="ri-user-line"></i></a>
+      
+    </div>
+  
+      <div class="flex items-center md:hidden">
+        <button id="mobile-menu-btn" class="text-white">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden">
+      <div class="container mx-auto py-2">
+        <a href="#" class="block text-white py-2">Home</a>
+        <a href="#" class="block text-white py-2">About Us</a>
+        <a href="#" class="block text-white py-2">Login</a>
+        <a href="#"><i class="ri-user-line"></i></a>
+        
+        
+        
+    
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="group hero-section text-center py-44 mt-24 bg-auto bg-center backdrop-blur-lg" style="background-image: url(pic.png);
+  background-size: cover;
+  opacity: initial;
+  background-repeat: no-repeat;">
+     <div class="text-4xl rounded-full  font-bold mb-4 ml-96 mr-96 bg-[#dec6e6] group-hover:bg-[#f5e97f] transition duration-300">
+    <h1 >Discover Your Next Internship</h1></div>
+    <div class="text-4xl rounded-full  font-bold mb-4 ml-80 mr-80 bg-[#dec6e6] group-hover:bg-[#f5e97f] transition duration-300">
+    <p class="text-lg mb-8">Connecting students with exciting internship opportunities and helping organizations find the best talent.</p>
+
+    </div>
+    <a href="#explore" class="bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold group-hover:bg-green-400 transition duration-300">Explore Now</a>
+  </div>
+
+<div class="container mx-auto flex justify-around flex-wrap p-4">
+  <!-- Student Section -->
+  <div class="section bg-white p-8 rounded-md m-4 text-center hover:bg-[#dec6e6]">
+    <i class="fas fa-user-graduate text-4xl text-blue-500 mb-4 animate-bounce"></i>
+    <h2 class="text-xl font-semibold text-gray-800 mb-2">Find Internship</h2>
+    <p>Discover opportunities for your career growth. Search and apply for internships.</p>
+  </div>
+
+  <!-- Organization Section -->
+  <div class="section bg-white p-8 rounded-md m-4 text-center hover:bg-[#dec6e6]">
+    <i class="fas fa-building text-4xl text-blue-500 mb-4 animate-bounce"></i>
+    <h2 class="text-xl font-semibold text-gray-800 mb-2">Find the Best Student</h2>
+    <p>Connect with talented students. Find the best fit for your organization.</p>
+  </div>
+</div>
+
+
+
+<!-- Frequently Asked Questions Section -->
+<section class="container mx-auto my-14">
+  <h2 class="text-3xl font-semibold mb-6">Frequently Asked Questions</h2>
+
+  <!-- FAQ Item 1 -->
+  <div class="mb-4">
+    <button class="bg-blue-500 text-white hover:bg-green-400 px-4 py-2 rounded-md focus:outline-none" onclick="toggleAnswer('faq-answer-1')">+  How can I search for internships?</button>
+    <div id="faq-answer-1" class="faq-answer mt-2">
+      <p>You can search for internships by logging into your account and using the search feature on our platform. Filter by your preferences to find suitable opportunities.
+      </p>
+    </div>
+  </div>
+
+  <!-- FAQ Item 2 -->
+  <div class="mb-4">
+    <button class="bg-blue-500 text-white  hover:bg-green-400 px-4 py-2 rounded-md focus:outline-none" onclick="toggleAnswer('faq-answer-2')">+ How can I apply for internships?</button>
+    <div id="faq-answer-2" class="faq-answer mt-2">
+      <p> Once you find an internship of interest, click on the "Apply" button and follow the application instructions provided by the organization offering the internship.</p>
+    </div>
+  </div>
+
+
+  
+
+</section>
+
+
+<!--Footer section-->
+<footer class="bg-blue-500 text-white p-4">
+  <div class="container mx-auto text-center">
+    <p class="text-sm">&copy; 2024 SearchIntern. All rights reserved.</p>
+    <div class="flex items-center justify-center space-x-4 mt-2">
+      <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+      <a href="#" class="hover:text-gray-300">Terms of Service</a>
+      <a href="#" class="hover:text-gray-300">Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
