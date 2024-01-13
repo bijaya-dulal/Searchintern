@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Common Styles */
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+ 
+        .form-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: auto;
+        }
+ 
+        /* Section 1: Personal Details */
+        #personal-details-form {
+            display: block;
+        }
+ 
+        /* Section 2: Academic Information */
+        #academic-info-form {
+            display: none;
+        }
+ 
+        /* Section 3: Skills and Training */
+        #skills-training-form {
+            display: none;
+        }
+ 
+        /* Section 4: Socials */
+        #socials-form {
+            display: none;
+        }
+ 
+        /* Section 5: Internship */
+        #internship-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+ 
+    <form action="#" method="post">
+        <div id="personal-details-form" class="form-container">
+            <!-- Section 1: Personal Details -->
+            <h1 class="text-2xl font-bold mb-6">Personal Details</h1>
+            <div>
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-600">Full Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+ 
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-600">Email Address</label>
+                    <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+ 
+                <div class="mb-4">
+                    <label for="phone" class="block text-sm font-medium text-gray-600">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+ 
+                <div class="mb-4">
+                    <label for="address" class="block text-sm font-medium text-gray-600">Address</label>
+                    <textarea id="address" name="address" rows="3" class="mt-1 p-2 w-full border rounded-md"></textarea>
+                </div>
+            </div>
+            <div class="mt-6">
+                <button type="button" onclick="showSection('academic-info-form')" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Next</button>
+            </div>
+        </div>
+ 
+        <div id="academic-info-form" class="form-container">
+            <!-- Section 2: Academic Information -->
+            <h1 class="text-2xl font-bold mb-6">Academic Information</h1>
+            <div class="mb-4">
+                <label for="course" class="block text-sm font-medium text-gray-600">Course</label>
+                <input type="text" id="course" name="course" class="mt-1 p-2 w-full border rounded-md">
+            </div>
+ 
+            <div class="mb-4">
+                <label for="college" class="block text-sm font-medium text-gray-600">College</label>
+                <input type="text" id="college" name="college" class="mt-1 p-2 w-full border rounded-md">
+            </div>
+ 
+            <div class="mb-4">
+                <label for="gpaTable" class="block text-sm font-medium text-gray-600">GPA of Each Semester</label>
+                    <table id="gpaTable" class="w-full mt-2">
+                        <thead>
+                            <tr>
+                                <th class="p-2 border">Semester</th>
+                                <th class="p-2 border">GPA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- You can dynamically generate rows for each semester -->
+                            <tr>
+                                <td class="p-2 border"><input type="text" name="semester1" class="w-full border p-1"></td>
+                                <td class="p-2 border"><input type="text" name="gpa1" class="w-full border p-1"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border"><input type="text" name="semester2" class="w-full border p-1"></td>
+                                <td class="p-2 border"><input type="text" name="gpa2" class="w-full border p-1"></td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+            </div>
+            <div class="mt-6">
+                <button type="button" onclick="showSection('skills-training-form')" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Next</button>
+            </div>
+        </div>
+ 
+        <div id="skills-training-form" class="form-container">
+            <!-- Section 3: Skills and Training -->
+            <h1 class="text-2xl font-bold mb-6">Skills and Training</h1>
+            <div class="mb-4">
+                <label for="technical skills" class="block text-sm font-medium text-gray-600">Technical skills</label>
+                <input type="text" id="course" name="course" class="mt-1 p-2 w-full border rounded-md">
+            </div>
+ 
+            <div class="mb-4">
+                <label for="soft skills" class="block text-sm font-medium text-gray-600">Soft skills</label>
+                <input type="text" id="college" name="college" class="mt-1 p-2 w-full border rounded-md">
+            </div>
+            <div class="mt-6">
+                <button type="button" onclick="showSection('socials-form')" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Next</button>
+            </div>
+        </div>
+ 
+        <div id="socials-form" class="form-container">
+            <!-- Section 4: Socials -->
+            <h1 class="text-2xl font-bold mb-6">Socials</h1>
+            <form action="4_train_exp.html" method="post">
+                <label for="socials" class="block text-sm font-medium text-gray-600">Socials link </label>
+                <div class="mb-4">
+                    <label for="Github" class="block text-sm font-medium text-gray-600">Github link </label>
+                    <input type="text" id="github" name="github" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+ 
+                <div class="mb-4">
+                    <label for="Linkend" class="block text-sm font-medium text-gray-600">Linkend </label>
+                    <input type="text" id="college" name="college" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div class="mt-6">
+                    <button type="button" onclick="showSection('internship-form')" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Next</button>
+                </div>
+            </form>
+        </div>
+ 
+        <div id="internship-form" class="form-container">
+            <!-- Section 5: Internship -->
+            <h1 class="text-2xl font-bold mb-6">Internship</h1>
+            <div class="mb-4">
+                <label for="dropdown" class="block text-sm font-medium text-gray-600">Choose Catogery</label>
+ 
+                <select id="dropdown" name="dropdown" class=" p-2 border rounded-md">
+                    <option value="option1">Web development</option>
+                    <option value="option2">App Development</option>
+                    <option value="option3">Network Engineering</option>
+                    <option value="option4">Syber Security</option>
+                    <option value="option5">UI/UX</option>
+                    <option value="option6">Product management</option>
+                    <option value="option7">Quality Assurance</option>
+                    <option value="option8">DevOps </option>
+                    <option value="option9">Digital Marketing</option>
+                    <option value="option10">Cloud Computing</option>
+                    <option value="option11">Database Management  </option>
+                    <option value="option12">AR/VR</option>
+                    <option value="option13">Cloud Computing</option>
+                    <option value="option14">Blockchain Internship </option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="dropdown" class="block text-sm font-medium text-gray-600">Timing</label>
+ 
+                <select id="dropdown" name="dropdown" class=" p-2 border rounded-md">
+                    <option value="option1">Full Time</option>
+                    <option value="option2">Part Time</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="dropdown" class="block text-sm font-medium text-gray-600">Duration</label>
+ 
+                <select id="dropdown" name="dropdown" class=" p-2 border rounded-md">
+                    <option value="option1">3 month</option>
+                    <option value="option2">6 month</option>
+                </select>
+            </div>
+            <div class="mt-6">
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Submit</button>
+            </div>
+        </div>
+    </form>
+ 
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.form-container').forEach(function(section) {
+                section.style.display = 'none';
+            });
+ 
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+ 
