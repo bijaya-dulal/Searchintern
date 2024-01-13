@@ -267,3 +267,8 @@ def submitStudent(request):
         # en1.save()
 
         return HttpResponse("submitted")    
+    
+
+def org_dash(request):
+        contents = {"title":"organisation"}
+        return render(request, 'org_dash.html', contents)

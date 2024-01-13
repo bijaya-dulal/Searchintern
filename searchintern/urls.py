@@ -32,6 +32,7 @@ urlpatterns = [
     path('recdata/',views.recdata, name ="recdata"),
     path('logout/',views.logoutPage, name ="logout"),
     path('substd/',views.submitStudent, name ="substd"),
+    path('org_dash/',views.org_dash, name ="org_dash"),
     
     
    
