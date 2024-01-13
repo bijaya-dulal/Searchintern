@@ -28,6 +28,13 @@ urlpatterns = [
     path('register/',views.register, name ="register"),
     path('userprofile/',views.userprofile, name ="userprofile"),
     path('signup/',views.signup, name ="signup"),
+    path('recform/',views.recform, name ="recform"),
+    path('recdata/',views.recdata, name ="recdata"),
+    path('logout/',views.logoutPage, name ="logout"),
+    path('substd/',views.submitStudent, name ="substd"),
+    
+    
+   
 
 
 ]

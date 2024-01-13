@@ -1,0 +1,84 @@
+{% extends "base.html" %} 
+
+{% block content%}
+<section class="container mx-auto mt-20 p-4 bg-white shadow-md rounded-md">
+
+    <!-- Form Section -->
+    <div class="w-2/4 mx-auto">
+      <h2 class="text-xl font-bold mb-4">Recruiter Form</h2>
+      <form action="{% url 'recdata'%}" id="recruiterForm" class="grid grid-cols-1 gap-4" method="post">
+        <!-- Form Fields -->
+        {%csrf_token %}
+        <label for="internshipTitle" class="font-bold">Internship Title:</label>
+        <input type="text" id="internshipTitle" name="internshipTitle" required
+          class="border p-2 rounded-md focus:outline-none focus:border-blue-500">
+
+        <label for="address" class="font-bold">Address:</label>
+        <input type="text" id="address" name="address" required
+          class="border p-2 rounded-md focus:outline-none focus:border-blue-500">
+
+        <label for="description" class="font-bold">Description:</label>
+        <textarea id="description" name="description" rows="4" required
+          class="border p-2 rounded-md focus:outline-none focus:border-blue-500"></textarea>
+
+        <label for="duration" class="font-bold">Deadline Date:</label>
+        <input type="date" id="deadline" name="deadline" required
+          class="border p-2 rounded-md focus:outline-none focus:border-blue-500">
+
+        <label for="category" class="font-bold">Category:</label>
+        <select id="category" name="category" required
+          class="border p-2 rounded-md focus:outline-none focus:border-blue-500">
+          <option value="" disabled selected>Select Category</option>
+          <option value="option1">Web development</option>
+          <option value="option2">App Development</option>
+          <option value="option3">Network Engineering</option>
+          <option value="option4">Syber Security</option>
+          <option value="option5">UI/UX</option>
+          <option value="option6">Product management</option>
+          <option value="option7">Quality Assurance</option>
+          <option value="option8">DevOps </option>
+          <option value="option9">Digital Marketing</option>
+          <option value="option10">Cloud Computing</option>
+          <option value="option11">Database Management  </option>
+          <option value="option12">AR/VR</option>
+          <option value="option13">Cloud Computing</option>
+          <option value="option14">Blockchain Internship </option>
+          
+        </select>
+
+        <label for="timing" class="font-bold">Timing:</label>
+        <select id="timing" name="timing" required
+          class="border p-2 rounded-md focus:outline-none focus:border-blue-500">
+          <option value="" disabled selected>Select Timing</option>
+          <option value="Full-Time">Full-Time</option>
+          <option value="Part-Time">Part-Time</option>
+          <option value="Flexible Hours">Flexible Hours</option>
+        </select>
+
+        <label for="formDueDate" class="font-bold">Days Remaining:</label>
+        <input type="text" id="formDueDate" name="formDueDate" readonly
+          class="border p-2 rounded-md bg-gray-100">
+
+        <button type="submit"
+          class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300">
+          Submit
+        </button>
+      </form>
+    </div>
+  </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Calculate days remainingform due date
+      const deadlineInput = document.getElementById('deadline');
+      const formDueDateInput = document.getElementById('formDueDate');
+
+      deadlineInput.addEventListener('change', function () {
+        const currentDate = new Date();
+        const dueDate = new Date(deadlineInput.value);
+        const daysRemaining = Math.floor((dueDate - currentDate) / (1000 * 60 * 60 * 24));
+
+        formDueDateInput.value = daysRemaining;
+      });
+    });
+  </script>
+{% endblock %}

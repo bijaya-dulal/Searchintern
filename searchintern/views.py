@@ -1,31 +1,33 @@
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render 
 from userinfo.models import User_details
+from submit_std.models import Student
+from rec_details.models import RecruiterForm
 from django.contrib.auth.models import User
+from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 import re
 
-
-
-
-
 #----------------------------------------------
-@login_required(login_url='login')
+# this is for authentication
 def homepage(request):
         contents = {"title":"Home"}
         return render(request, 'index.html', contents)
 
-
-
+@login_required(login_url='login')
 def aboutUs(request):
         contents = {"title":"aboutus"}
         return render (request, 'about_us.html', contents)
 
+
+def recform(request):
+    return render(request,'rec_form.html')
 def register(request):
     contents = {"title":"Registration"}
     return render(request,"register_form.html",contents)
 
+@login_required(login_url='login')
 def userprofile(request):
     contents = {"title":"profile"}
     return render(request,"user_profile.html",contents)
@@ -198,9 +200,10 @@ def login(request):
             if is_valid_name(name):
                
                user = authenticate(request,username=name,password=pw)
+               
 
                if user is not None:
-                   login(request,user)
+                   auth_login(request,user,pw)
                    return render(request,'index.html')
                else:
                    contents = {"title": "Login", 'error': True,"error_message":"credential mismatch"}
@@ -226,3 +229,41 @@ def login(request):
 def logoutPage(request):
     logout(request)
     return render(request,'index.html')
+
+#to save the data from recuiter
+def recdata(request):
+    if request.method == 'POST':
+        internship_title = request.POST.get('internshipTitle')
+        address = request.POST.get('address')
+        description = request.POST.get('description')
+        #duration = request.POST.get('duration')
+        category = request.POST.get('category')
+        timing = request.POST.get('timing')
+        formDueDate = (request.POST.get('formDueDate'))
+        en1= RecruiterForm(internship_title=internship_title,address=address,description=description,category=category,timing=timing,deadline=formDueDate)
+        en1.save()
+
+        return HttpResponse("submitted")
+    
+
+def submitStudent(request):
+    print(f"Submit student : {request}")
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        #duration = request.POST.get('duration')
+        address = request.POST.get('address')
+        skills = request.POST.get('skills')
+        sskill = request.POST.get('sskill')
+        college = request.POST.get('college')
+        course = request.POST.get('course')
+        github=request.POST.get('github')
+        linkedin=request.POST.get('linkedin')
+        
+        en= Student(name=name,email=email,phone=phone,address=address,skills=skills,sskill=sskill,college=college,course=course,github=github,linkedin=linkedin)
+        en.save()
+        # en1= RecruiterForm(internship_title=internship_title,address=address,description=description,category=category,timing=timing,deadline=formDueDate)
+        # en1.save()
+
+        return HttpResponse("submitted")    
