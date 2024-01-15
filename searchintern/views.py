@@ -11,6 +11,7 @@ import re
 
 #----------------------------------------------
 # this is for authentication
+@login_required(login_url='login')
 def homepage(request):
         contents = {"title":"Home"}
         return render(request, 'index.html', contents)
@@ -27,7 +28,7 @@ def register(request):
     contents = {"title":"Registration"}
     return render(request,"register_form.html",contents)
 
-@login_required(login_url='login')
+
 def userprofile(request):
     contents = {"title":"profile"}
     return render(request,"user_profile.html",contents)
@@ -243,7 +244,7 @@ def recdata(request):
         en1= RecruiterForm(internship_title=internship_title,address=address,description=description,category=category,timing=timing,deadline=formDueDate)
         en1.save()
 
-        return HttpResponse("submitted")
+        return ("submitted")
     
 
 def submitStudent(request):
@@ -272,3 +273,15 @@ def submitStudent(request):
 def org_dash(request):
         contents = {"title":"organisation"}
         return render(request, 'org_dash.html', contents)
+
+def explore(request):
+    contents = {"title":"explore"}
+    return render(request, 'explore.html', contents)
+
+
+def status(request):
+    contents = {"title":"explore"}
+    return render(request, 'status.html', contents)
+def vdetails(request):
+    contents = {"title":"vdetails"}
+    return render(request, 'vdetails.html', contents)
