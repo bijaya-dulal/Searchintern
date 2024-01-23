@@ -1,10 +1,10 @@
 from django.http import HttpResponse,HttpResponseRedirect
-from django.shortcuts import render 
+from django.shortcuts import render , redirect
 from userinfo.models import User_details
 from submit_std.models import Student
 from rec_details.models import RecruiterForm
-from django.contrib.auth.models import User
-from django.contrib.auth import login as auth_login
+#from django.contrib.auth.models import User
+from django.contrib.auth import login 
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 import re
@@ -16,11 +16,14 @@ def homepage(request):
         contents = {"title":"Home"}
         return render(request, 'index.html', contents)
 
-@login_required(login_url='login')
-def aboutUs(request):
-        contents = {"title":"aboutus"}
-        return render (request, 'about_us.html', contents)
 
+def aboutUs(request):
+    if request.user.is_authenticated:
+      print("yes authenticate")
+      return render(request,"about_us.html")
+    else:
+        contents = {"title":"login"}
+        return render(request,"login.html",contents)
 
 def recform(request):
     return render(request,'rec_form.html')
@@ -30,11 +33,15 @@ def register(request):
 
 
 def userprofile(request):
-    contents = {"title":"profile"}
+    user = request.user
+    print(user)
+    contents = {"title":"profile",
+                'user':user}
     return render(request,"user_profile.html",contents)
 
 def signup(request):
     print("signup")
+  
     error = False
     
     try:
@@ -147,7 +154,38 @@ def is_valid_name(name):
 
     # Return True if the name is valid, False otherwise
     return bool(match)
+ 
+#-------------------------------------------------------#
 
+def login_user(request):
+    if request.user.is_authenticated:
+        return render(request,'index.html')
+    else:
+        if request.method == 'POST':
+            # Get the username and password from the POST request
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            # Use Django's authenticate function to check the credentials
+            user = authenticate(request, username=username, password=password)
+
+            # If the user is authenticated, log them in
+            if user is not None:
+                login(request,user)
+                # Redirect to a success page or homepage
+                return render(request,'index.html')
+            else:
+                # If authentication fails, you can handle it accordingly
+                return render(request, 'login.html', {'error': 'Invalid credentials'})
+
+    # If it's a GET request, render the login form
+    return render(request, 'login.html')
+
+
+
+
+
+#------------------------------------------------------
 # def login(request):
 #     error = False
     
@@ -155,20 +193,23 @@ def is_valid_name(name):
 #         if request.method == 'POST':
 #             print("Inside POST method")
 #             # Accessing form data
-#             email =str(request.POST.get('email'))
+#             name =str(request.POST.get('name'))
 #             pw = str(request.POST.get('pass'))
-#             print("Email:", email)
+#             print("name:", name)
 #             print("Password:", pw)
-#             if is_valid_email(email):
-#                login_data = User_details.objects.all()
-#                for a in login_data:
-#                    print(a.email)
-#                    print(a.password)
-#                    if a.email == email and a.password == pw:
-#                       return render(request, 'index.html') 
-                   
-#                contents = {"title": "Login", 'error': True,"error_message":"credential mismatch"}
-#                return render(request, "login.html", contents)
+#             if is_valid_name(name):
+               
+#                user = authenticate(request,username=name,password=pw)
+               
+
+#                if user is not None:
+#                    login(request,user,pw)
+#                    print("login completed")
+#                    request.session['user_name'] = name
+#                    return render(request,'index.html')
+#                else:
+#                    contents = {"title": "Login", 'error': True,"error_message":"credential mismatch"}
+#                    return render(request, "login.html", contents)
               
 #             else:
             
@@ -187,49 +228,9 @@ def is_valid_name(name):
 #         contents = {"title": "Login", 'error': error, 'exception_message': str(e)}
 #         return render(request, "login.html", contents)
 
-def login(request):
-    error = False
-    
-    try:
-        if request.method == 'POST':
-            print("Inside POST method")
-            # Accessing form data
-            name =str(request.POST.get('name'))
-            pw = str(request.POST.get('pass'))
-            print("name:", name)
-            print("Password:", pw)
-            if is_valid_name(name):
-               
-               user = authenticate(request,username=name,password=pw)
-               
-
-               if user is not None:
-                   auth_login(request,user,pw)
-                   return render(request,'index.html')
-               else:
-                   contents = {"title": "Login", 'error': True,"error_message":"credential mismatch"}
-                   return render(request, "login.html", contents)
-              
-            else:
-            
-                
-                contents = {"title": "Login", 'error': True,'error_message':"Enter proper value"}
-                return render(request, "login.html", contents)
-
-            return render(request, "login.html", contents)
-        else:
-            print("Inside else")
-            contents = {"title": "Login", 'error': error}
-            return render(request, "login.html", contents)
-
-    except Exception as e:
-        print("Error:", str(e))  # Print or log the exception message
-        contents = {"title": "Login", 'error': error, 'exception_message': str(e)}
-        return render(request, "login.html", contents)
-
 def logoutPage(request):
     logout(request)
-    return render(request,'index.html')
+    return render(request,'login.html')
 
 #to save the data from recuiter
 def recdata(request):

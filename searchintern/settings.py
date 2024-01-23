@@ -63,7 +63,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
+
+
+
 
 ROOT_URLCONF = 'searchintern.urls'
 
@@ -85,6 +89,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'searchintern.wsgi.application'
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
 
 
 # Database
