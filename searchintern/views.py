@@ -3,7 +3,7 @@ from django.shortcuts import render , redirect
 from userinfo.models import User_details
 from submit_std.models import Student
 from rec_details.models import RecruiterForm
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.contrib.auth import login 
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -123,7 +123,13 @@ def signup(request):
 
     except Exception as e:
         print("Error:", str(e))
-
+        contents = {'title': "signup",
+                                   'error':True,
+                                   'error_message':e,
+                                   }
+ 
+        return render(request, "signup.html", contents)
+    return render(request, "signup.html", contents)
     
 
 
@@ -179,7 +185,7 @@ def login_user(request):
                 return render(request, 'login.html', {'error': 'Invalid credentials'})
 
     # If it's a GET request, render the login form
-    return render(request, 'login.html')
+    return render(request, 'login.html',{'title':'login'})
 
 
 
