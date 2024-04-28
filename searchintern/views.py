@@ -11,22 +11,21 @@ import re
 
 #----------------------------------------------
 # this is for authentication
-@login_required(login_url='login')
+
 def homepage(request):
         contents = {"title":"Home"}
         return render(request, 'index.html', contents)
 
 
 def aboutUs(request):
-    if request.user.is_authenticated:
-      print("yes authenticate")
+  
       return render(request,"about_us.html")
-    else:
-        contents = {"title":"login"}
-        return render(request,"login.html",contents)
+   
 
 def recform(request):
     return render(request,'rec_form.html')
+
+@login_required(login_url='login')
 def register(request):
     contents = {"title":"Registration"}
     return render(request,"register_form.html",contents)
@@ -165,7 +164,7 @@ def is_valid_name(name):
 
 def login_user(request):
     if request.user.is_authenticated:
-        return render(request,'index.html')
+        return render(request,'user_profile.html')
     else:
         if request.method == 'POST':
             # Get the username and password from the POST request
