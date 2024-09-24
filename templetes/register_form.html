@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="
-    https://cdn.jsdelivr.net/npm/remixicon@4.0.1/fonts/remixicon.min.css
-    " rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.1/fonts/remixicon.min.css" rel="stylesheet">
     <style>
         /* Common Styles */
         body {
@@ -18,7 +16,7 @@
             height: 100vh;
             margin: 0;
         }
- 
+
         .form-container {
             background-color: #ffffff;
             padding: 2rem;
@@ -27,213 +25,146 @@
             width: 400px;
             margin: auto;
         }
- 
-        /* Section 1: Personal Details */
+
+        /* Hide all forms initially */
+        .form-container {
+            display: none;
+        }
+
+        /* Show the first form on page load */
         #personal-details-form {
             display: block;
-        }
- 
-        /* Section 2: Academic Information */
-        #academic-info-form {
-            display: none;
-        }
- 
-        /* Section 3: Skills and Training */
-        #skills-training-form {
-            display: none;
-        }
- 
-        /* Section 4: Socials */
-        #socials-form {
-            display: none;
-        }
- 
-        /* Section 5: Internship */
-        #internship-form {
-            display: none;
         }
     </style>
 </head>
 <body>
-     <!-- Navigation Bar -->
- <nav class="bg-blue-500 text-white p-4 fixed w-full top-0 z-10">
-    <div class="container mx-auto flex justify-between items-center">
-        <div class="flex items-center ">
-          <a href="#" class="text-white text-lg font-semibold">SearchIntern</a>
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-500 text-white p-4 fixed w-full top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-lg font-semibold">SearchIntern</a>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="{% url 'homepage' %}" class="text-white hover:text-gray-300">Home</a>
+                <a href="{% url 'aboutus' %}" class="text-white hover:text-gray-300">About Us</a>
+                <a href="{% url 'login' %}" class="text-white hover:text-gray-300">Login</a>
+                <a href="{% url 'register' %}" class="text-white hover:text-gray-300">Register</a>
+                <a href="{% url 'userprofile'%}"><i class="ri-user-line"></i></a>
+            </div>
         </div>
-    
-        <div class="hidden md:flex items-center space-x-4">
-          <a href="{% url 'homepage' %}" class="text-white hover:text-gray-300">Home</a>
-          <a href="{% url 'aboutus' %}" class="text-white hover:text-gray-300">About Us</a>
-          <a href="{% url 'login' %}" class="text-white hover:text-gray-300">Login</a>
-          <a href="{% url 'register' %}" class="text-white hover:text-gray-300">Register</a>
-          <a href="{% url 'userprofile'%}"><i class="ri-user-line"></i></a>
-        
-      </div>
- 
-      <div class="flex items-center md:hidden">
-       <button id="mobile-menu-btn" class="text-white">
-         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-         </svg>
-       </button>
-     </div>
-   </div>
- 
-   <!-- Mobile menu -->
-   <div id="mobile-menu" class="md:hidden hidden">
-     <div class="container mx-auto py-2">
-       <a href="{% url 'homepage' %}" class="block text-white py-2">Home</a>
-       <a href="{% url 'homepage' %}" class="block text-white py-2">About Us</a>
-       <a href="{% url 'homepage' %}" class="block text-white py-2">Login</a>
-       <a href="{% url 'homepage' %}" class="text-white hover:text-gray-300">Register</a>
-       <a href="{% url 'userprofile'%}"><p></p><i class="ri-user-line"></i></a>
-     
-       
-       
-   
-     </div>
-   </div>
- </nav>
-     
+    </nav>
+
     <form action="{% url 'substd' %}" method="post">
         {% csrf_token %}
+        <!-- Section 1: Personal Details -->
         <div id="personal-details-form" class="form-container">
-            <!-- Section 1: Personal Details -->
             <h1 class="text-2xl font-bold mb-6">Personal Details</h1>
             <div>
                 <div class="mb-4">
                     <label for="name" class="block text-sm font-medium text-gray-600">Full Name</label>
                     <input type="text" id="name" name="name" class="mt-1 p-2 w-full border rounded-md">
                 </div>
- 
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-gray-600">Email Address</label>
                     <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md">
                 </div>
- 
                 <div class="mb-4">
                     <label for="phone" class="block text-sm font-medium text-gray-600">Phone Number</label>
                     <input type="tel" id="phone" name="phone" class="mt-1 p-2 w-full border rounded-md">
                 </div>
- 
                 <div class="mb-4">
                     <label for="address" class="block text-sm font-medium text-gray-600">Address</label>
                     <textarea id="address" name="address" rows="3" class="mt-1 p-2 w-full border rounded-md"></textarea>
                 </div>
             </div>
-            <div class="mt-6">
-                <button type="next" onclick="showSection('academic-info-form')" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Next</button>
+            <div class="flex justify-between mt-6">
+                <button type="button" class="w-full bg-gray-300 text-gray-600 p-2 rounded-md hover:bg-gray-400 hidden" id="prev-personal" onclick="showPrevious('personal-details-form')">Previous</button>
+                <button type="button" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600" onclick="showNext('academic-info-form')">Next</button>
             </div>
         </div>
- 
+
+        <!-- Section 2: Academic Information -->
         <div id="academic-info-form" class="form-container">
-            <!-- Section 2: Academic Information -->
             <h1 class="text-2xl font-bold mb-6">Academic Information</h1>
             <div class="mb-4">
                 <label for="course" class="block text-sm font-medium text-gray-600">Course</label>
                 <input type="text" id="course" name="course" class="mt-1 p-2 w-full border rounded-md">
             </div>
- 
             <div class="mb-4">
                 <label for="college" class="block text-sm font-medium text-gray-600">College</label>
                 <input type="text" id="college" name="college" class="mt-1 p-2 w-full border rounded-md">
             </div>
- 
-            <div class="mt-6">
-                <button type="next" onclick="showSection('skills-training-form')" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Next</button>
+            <div class="flex justify-between mt-6">
+                <button type="button" class="w-full bg-gray-300 text-gray-600 p-2 rounded-md hover:bg-gray-400" onclick="showPrevious('personal-details-form')">Previous</button>
+                <button type="button" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600" onclick="showNext('skills-training-form')">Next</button>
             </div>
         </div>
- 
+
+        <!-- Section 3: Skills and Training -->
         <div id="skills-training-form" class="form-container">
-            <!-- Section 3: Skills and Training -->
             <h1 class="text-2xl font-bold mb-6">Skills and Training</h1>
             <div class="mb-4">
-                <label for="technical skills" class="block text-sm font-medium text-gray-600">Technical skills</label>
+                <label for="skills" class="block text-sm font-medium text-gray-600">Technical Skills</label>
                 <input type="text" id="skills" name="skills" class="mt-1 p-2 w-full border rounded-md">
             </div>
- 
             <div class="mb-4">
-                <label for="soft skills" class="block text-sm font-medium text-gray-600">Soft skills</label>
+                <label for="sskill" class="block text-sm font-medium text-gray-600">Soft Skills</label>
                 <input type="text" id="sskill" name="sskill" class="mt-1 p-2 w-full border rounded-md">
             </div>
-            <div class="mt-6">
-                <button type="next" onclick="showSection('socials-form')" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Next</button>
+            <div class="flex justify-between mt-6">
+                <button type="button" class="w-full bg-gray-300 text-gray-600 p-2 rounded-md hover:bg-gray-400" onclick="showPrevious('academic-info-form')">Previous</button>
+                <button type="button" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600" onclick="showNext('socials-form')">Next</button>
             </div>
         </div>
- 
+
+        <!-- Section 4: Socials -->
         <div id="socials-form" class="form-container">
-            <!-- Section 4: Socials -->
             <h1 class="text-2xl font-bold mb-6">Socials</h1>
-            <form action="4_train_exp.html" method="post">
-                <label for="socials" class="block text-sm font-medium text-gray-600">Socials link </label>
-                <div class="mb-4">
-                    <label for="Github" class="block text-sm font-medium text-gray-600">Github link </label>
-                    <input type="text" id="github" name="github" class="mt-1 p-2 w-full border rounded-md">
-                </div>
- 
-                <div class="mb-4">
-                    <label for="Linkend" class="block text-sm font-medium text-gray-600">Linkend </label>
-                    <input type="text" id="college" name="college" class="mt-1 p-2 w-full border rounded-md">
-                </div>
-                <div class="mt-6">
-                    <button type="button" onclick="showSection('internship-form')" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Next</button>
-                </div>
-            </form>
+            <div class="mb-4">
+                <label for="github" class="block text-sm font-medium text-gray-600">Github Link</label>
+                <input type="text" id="github" name="github" class="mt-1 p-2 w-full border rounded-md">
+            </div>
+            <div class="mb-4">
+                <label for="linkedin" class="block text-sm font-medium text-gray-600">LinkedIn Link</label>
+                <input type="text" id="linkedin" name="linkedin" class="mt-1 p-2 w-full border rounded-md">
+            </div>
+            <div class="flex justify-between mt-6">
+                <button type="button" class="w-full bg-gray-300 text-gray-600 p-2 rounded-md hover:bg-gray-400" onclick="showPrevious('skills-training-form')">Previous</button>
+                <button type="button" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600" onclick="showNext('internship-form')">Next</button>
+            </div>
         </div>
- 
+
+        <!-- Section 5: Internship -->
         <div id="internship-form" class="form-container">
-            <!-- Section 5: Internship -->
             <h1 class="text-2xl font-bold mb-6">Internship</h1>
             <div class="mb-4">
-                <label for="dropdown" class="block text-sm font-medium text-gray-600">Choose Catogery</label>
- 
-                <select id="dropdown" name="dropdown" class=" p-2 border rounded-md">
-                    <option value="option1">Web development</option>
+                <label for="dropdown" class="block text-sm font-medium text-gray-600">Choose Category</label>
+                <select id="dropdown" name="dropdown" class="p-2 border rounded-md w-full">
+                    <option value="option1">Web Development</option>
                     <option value="option2">App Development</option>
                     <option value="option3">Network Engineering</option>
-                    <option value="option4">Syber Security</option>
-                    <option value="option5">UI/UX</option>
-                    <option value="option6">Product management</option>
-                    <option value="option7">Quality Assurance</option>
-                    <option value="option8">DevOps </option>
-                    <option value="option9">Digital Marketing</option>
-                    <option value="option10">Cloud Computing</option>
-                    <option value="option11">Database Management  </option>
-                    <option value="option12">AR/VR</option>
-                    <option value="option13">Cloud Computing</option>
-                    <option value="option14">Blockchain Internship </option>
+                    <option value="option4">Cyber Security</option>
+                    <option value="option5">Machine Learning</option>
                 </select>
             </div>
             <div class="mb-4">
-                <label for="dropdown" class="block text-sm font-medium text-gray-600">Timing</label>
- 
-                <select id="dropdown" name="dropdown" class=" p-2 border rounded-md">
-                    <option value="option1">Full Time</option>
-                    <option value="option2">Part Time</option>
-                </select>
+                <label for="aboutyou" class="block text-sm font-medium text-gray-600">Tell us about yourself</label>
+                <textarea id="aboutyou" name="aboutyou" rows="4" class="p-2 border rounded-md w-full"></textarea>
             </div>
-            <div class="mb-4">
-                <label for="dropdown" class="block text-sm font-medium text-gray-600">Duration</label>
- 
-                <select id="dropdown" name="dropdown" class=" p-2 border rounded-md">
-                    <option value="option1">3 month</option>
-                    <option value="option2">6 month</option>
-                </select>
-            </div>
-            <div class="mt-6">
+            <div class="flex justify-between mt-6">
+                <button type="button" class="w-full bg-gray-300 text-gray-600 p-2 rounded-md hover:bg-gray-400" onclick="showPrevious('socials-form')">Previous</button>
                 <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Submit</button>
             </div>
         </div>
     </form>
- 
+
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.form-container').forEach(function(section) {
-                section.style.display = 'none';
-            });
- 
-            document.getElementById(sectionId).style.display = 'block';
+        function showNext(formId) {
+            document.querySelectorAll('.form-container').forEach(form => form.style.display = 'none');
+            document.getElementById(formId).style.display = 'block';
+        }
+
+        function showPrevious(formId) {
+            document.querySelectorAll('.form-container').forEach(form => form.style.display = 'none');
+            document.getElementById(formId).style.display = 'block';
         }
     </script>
 </body>

@@ -273,7 +273,8 @@ def submitStudent(request):
         # en1= RecruiterForm(internship_title=internship_title,address=address,description=description,category=category,timing=timing,deadline=formDueDate)
         # en1.save()
 
-        return HttpResponse("submitted")    
+       
+        return render(request, "register_form.html")
     
 
 def org_dash(request):
